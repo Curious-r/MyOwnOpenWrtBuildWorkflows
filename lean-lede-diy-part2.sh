@@ -16,5 +16,4 @@
 # 编译jerrykkk重制的类APP UI主题
 cd ./package/lean  
 rm -rf luci-theme-neobird  
-git clone https://github.com/thinktip/luci-theme-neobird.git  
-cd ../../
+git clone https://github.com/thinktip/luci-theme-neobird.git
