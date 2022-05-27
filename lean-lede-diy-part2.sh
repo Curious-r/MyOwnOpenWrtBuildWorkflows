@@ -16,4 +16,4 @@
 # 编译2smile重制的类APP UI主题
 cd ./package/lean  
 rm -rf luci-theme-neobird  
-git clone https://github.com/thinktip/luci-theme-neobird.git
+git clone https://github.com/Curious-r/luci-theme-neobird.git
