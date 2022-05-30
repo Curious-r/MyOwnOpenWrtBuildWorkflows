@@ -12,8 +12,3 @@
 
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
-
-# 编译2smile重制的类APP UI主题
-cd ./package/lean  
-rm -rf luci-theme-neobird  
-git clone https://github.com/Curious-r/luci-theme-neobird.git
