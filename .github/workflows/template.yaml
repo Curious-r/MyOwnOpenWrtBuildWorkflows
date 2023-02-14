@@ -83,7 +83,7 @@ jobs:
 
       - name: Compare Commit Hash
         id: cacheHash
-        uses: actions/cache@v3.2.5
+        uses: actions/cache@main
         with:
           path: $REPO_NAME.commitHash
           key: HEAD-${{ steps.getHash.outputs.commitHash }}
@@ -103,7 +103,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.3.0
+        uses: actions/checkout@main
 
       - name: Initialization environment
         env:
@@ -154,7 +154,7 @@ jobs:
           $GITHUB_WORKSPACE/$DIY_P2_SH
 
       - name: SSH connection to Actions
-        uses: P3TERX/ssh2actions@v1.0.0
+        uses: P3TERX/ssh2actions@main
         if: github.event.inputs.ssh == 'true' || contains(github.event.action, 'ssh')
         env:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -185,7 +185,7 @@ jobs:
         run: df -hT
 
       - name: Upload bin directory
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@main
         if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
         with:
           name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
@@ -201,7 +201,7 @@ jobs:
           echo "::set-output name=status::success"
 
       - name: Upload firmware directory
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@main
         if: steps.organize.outputs.status == 'success' && !cancelled()
         with:
           name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
@@ -238,7 +238,7 @@ jobs:
           echo "::set-output name=status::success"
 
       - name: Upload firmware to release
-        uses: softprops/action-gh-release@v0.1.15
+        uses: softprops/action-gh-release@master
         if: steps.tag.outputs.status == 'success' && !cancelled()
         with:
           tag_name: ${{ steps.tag.outputs.release_tag }}
@@ -254,13 +254,13 @@ jobs:
 
     steps:
       - name: Delete workflow runs
-        uses: Mattraks/delete-workflow-runs@v2.0.3
+        uses: Mattraks/delete-workflow-runs@main
         with:
           retain_days: 1
           keep_minimum_runs: 1
 
       - name: Remove old Releases
-        uses: dev-drprasad/delete-older-releases@v0.2.1
+        uses: dev-drprasad/delete-older-releases@master
         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
         with:
           keep_latest: 3
