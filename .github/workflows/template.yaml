@@ -99,7 +99,7 @@ jobs:
     needs: check
     permissions:
       contents: write
-    if: needs.check.outputs.cache-hit != 'true' || (github.event.inputs.force-build == 'true' && github.event.inputs.force-build != 'false')
+    if: needs.check.outputs.cache-hit != 'true' || github.event.inputs.force-build == 'true'
 
     steps:
       - name: Checkout
