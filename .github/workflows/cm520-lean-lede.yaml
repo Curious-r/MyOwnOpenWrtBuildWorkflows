@@ -80,7 +80,7 @@ jobs:
 
   build:
     name: Build firmware
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     needs: check
     permissions:
       contents: write
@@ -223,7 +223,7 @@ jobs:
 
   clean:
     name: Clean up old assets
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     permissions:
       actions: write
       contents: write
