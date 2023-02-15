@@ -71,7 +71,7 @@ env:
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: true
   UPLOAD_RELEASE: true
-  # Please change the following to your time zone.
+  # Change the following to your time zone.
   TIME_ZONE: Asia/Shanghai
 
 jobs:
