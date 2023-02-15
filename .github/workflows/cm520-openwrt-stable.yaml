@@ -35,7 +35,7 @@ on:
         required: false
         default: "false"
   schedule:
-    - cron: 0 16 * * *
+    - cron: 0 12 * * *
 
 env:
   # REPO means the OpenWrt repo you want to build from in this workflow. 
