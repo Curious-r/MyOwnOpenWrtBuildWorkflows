@@ -22,7 +22,7 @@
 #
 
 # Workflow name which is showed in GitHub Actions.
-name: Build Example-Firmware for Example-Device
+name: Build OpenWrt Stable for CM520
 
 on:
   workflow_dispatch:
@@ -35,16 +35,16 @@ on:
         description: "SSH connection to Actions"
         required: false
         default: "false"
-#  schedule:
-#    - cron: 0 */18 * * *
+  schedule:
+    - cron: 0 */18 * * *
 
 env:
   # REPO means the OpenWrt repo you want to build from in this workflow. 
   # You can modify the REPO_NAME to any name you want, but remember not to let it 
   # have the same name in other workflows.
-  REPO_NAME: example-name
-  REPO_URL: https://github.com/example/example.git
-  REPO_BRANCH: master
+  REPO_NAME: opemwrt
+  REPO_URL: https://github.com/openwrt/openwrt.git
+  REPO_BRANCH: openwrt-22.03
   BUILD_DEPENDS:  "ack antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential \
                   bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext \                    gcc-multilib g++-multilib git gperf haveged help2man intltool libc6-dev-i386 \
                   libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev \
@@ -54,23 +54,23 @@ env:
                   upx-ucl unzip vim wget xmlto xxd zlib1g-dev"
   # FEEDS_CONF and CONFIG_FILE is the name of your own config files for compiling,
   # you should upload these files into the root directory of your workflow repo.
-  FEEDS_CONF: example-feeds.conf.default
-  CONFIG_FILE: example.config
+  FEEDS_CONF: cm520-openwrt-stable-feeds.conf.default
+  CONFIG_FILE: cm520-openwrt-stable.config
   # DIY_P1_SH is the name of extra bash script you want to execute before feeds 
   # update&install and DIY_P2_SH is the one after feeds update&install. You can 
   # modify the initial settings of your firmware through these two scripts. If 
   # this is what you need, please upload your scripts to the root directory of 
   # your workflow repo.
-  DIY_P1_SH: example-diy-part1.sh
-  DIY_P2_SH: example-diy-part2.sh
+  DIY_P1_SH: cm520-openwrt-stable-diy-part1.sh
+  DIY_P2_SH: cm520-openwrt-stable-diy-part2.sh
   # The following determines whether to upload the compiled products.
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   # The following is the option of where the firmware needs to be transfered. 
   # To enable the corresponding target, you need to change false to true.
   UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: false
-  UPLOAD_RELEASE: false
+  UPLOAD_WETRANSFER: true
+  UPLOAD_RELEASE: true
   # Please change the following to your time zone.
   TZ: Asia/Shanghai
 
