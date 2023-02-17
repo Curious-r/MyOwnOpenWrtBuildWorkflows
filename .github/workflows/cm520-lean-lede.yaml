@@ -8,6 +8,8 @@
 # Description: Automatically check OpenWrt source code update and build it. Removed additional token 
 # requirements.
 #
+# Some features come from https://github.com/P3TERX/Actions-OpenWrt, visit the repository to get its 
+# copyright information.
 #-------------------------------------------------------------------------------------------------------
 
 

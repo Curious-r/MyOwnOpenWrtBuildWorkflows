@@ -1,25 +1,16 @@
 #
-# Modification in Curious-r/OpenWrtBuildWorkflows: 
 # Copyright (c) 2022 Curious <https://www.curious.host>
 #
 # This is free software, licensed under the MIT License.
 # See /LICENSE for more information.
 # 
 # https://github.com/Curious-r/OpenWrtBuildWorkflows
-# Description: Automatically check OpenWrt source code
-# update and build it. Removed additional token require-
-# ments.
+# Description: Automatically check OpenWrt source code update and build it. Removed additional token 
+# requirements.
 #
-#-------------------------------------------------------
-# Upstream source code:
-# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
-#
-# This is free software, licensed under the MIT License.
-# See /LICENSE for more information.
-#
-# https://github.com/P3TERX/Actions-OpenWrt
-# Description: Build OpenWrt using GitHub Actions
-#
+# Some features come from https://github.com/P3TERX/Actions-OpenWrt, visit the repository to get its 
+# copyright information.
+#-------------------------------------------------------------------------------------------------------
 
 name: Build OpenWrt for CM520
 
