@@ -89,7 +89,7 @@ jobs:
       - name: Save New Commit Hash
         if: steps.cacheHash.outputs.cache-hit != 'true'
         run: |
-          echo ${{ steps.getHash.outputs.commitHash }} | tee $REPO_NAME-REPO_BRANCH.commitHash
+          echo ${{ steps.getHash.outputs.commitHash }} | tee $REPO_NAME-$REPO_BRANCH.commitHash
 
   build:
     name: Build firmware
