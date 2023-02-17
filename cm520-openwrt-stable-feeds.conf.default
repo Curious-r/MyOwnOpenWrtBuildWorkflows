@@ -6,6 +6,6 @@ src-git-full telephony https://git.openwrt.org/feed/telephony.git
 #src-git-full targets https://github.com/openwrt/targets.git
 #src-git-full oldpackages http://git.openwrt.org/packages.git
 #src-link custom /usr/src/openwrt/custom-feed
-src-git kenzo https://github.com/kenzok8/openwrt-packages
-src-git small https://github.com/kenzok8/small # passwall 基本依赖
-src-git ddns_go https://github.com/sirpdboy/luci-app-ddns-go
+src-git kenzo https://github.com/kenzok8/openwrt-packages.git
+src-git small https://github.com/kenzok8/small.git # passwall 基本依赖
+src-git ddns_go https://github.com/sirpdboy/luci-app-ddns-go.git
