@@ -5,13 +5,12 @@
 # See /LICENSE for more information.
 # 
 # https://github.com/Curious-r/OpenWrtBuildWorkflows
-# Description: Automatically check OpenWrt source code update and build it. Removed additional token 
-# requirements.
+# Description: Automatically check OpenWrt source code update and build it. No additional keys are 
+# required.
 #
 # Some features come from https://github.com/P3TERX/Actions-OpenWrt, visit the repository to get its 
 # copyright information.
 #-------------------------------------------------------------------------------------------------------
-
 
 # Workflow name which is showed in GitHub Actions.
 name: Build OpenWrt Stable for CM520
