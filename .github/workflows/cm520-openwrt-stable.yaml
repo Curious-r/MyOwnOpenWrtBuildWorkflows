@@ -81,7 +81,7 @@ jobs:
 
       - name: Compare Commit Hash
         id: cacheHash
-        uses: actions/cache@main
+        uses: actions/cache@v2
         with:
           path: "$REPO_NAME-$REPO_BRANCH.commitHash"
           key: HEAD-${{ steps.getHash.outputs.commitHash }}
@@ -101,7 +101,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@
+        uses: actions/checkout@main
 
       - name: Initialization environment
         env:
