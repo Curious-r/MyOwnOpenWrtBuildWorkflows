@@ -87,12 +87,10 @@ jobs:
           key: HEAD-${{ steps.get-hash.outputs.commit-hash }}
 
       - name: Save New Commit Hash
-        if: steps.cache-hash.outputs.cache-hit == 'true'
+        if: steps.cache-hash.outputs.cache-hit != 'true'
         run: |
           echo ${{ steps.get-hash.outputs.commit-hash }} | 
             tee .$REPO_NAME-$REPO_BRANCH-commit-hash
-          echo "测试点"
-          cat .$REPO_NAME-$REPO_BRANCH-commit-hash
 
   build:
     name: Build firmware
@@ -154,8 +152,8 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
-      - name: Download package
-        id: download-package
+      - name: Download packages
+        id: download-packages
         run: |
           cd openwrt/
           make defconfig
