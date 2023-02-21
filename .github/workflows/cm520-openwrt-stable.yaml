@@ -89,7 +89,8 @@ jobs:
       - name: Save New Commit Hash
         if: steps.cacheHash.outputs.cache-hit != 'true'
         run: |
-          echo ${{ steps.getHash.outputs.commit-hash }} | tee .${{ env.REPO_NAME }}-${{ env.REPO_BRANCH }}-commit-hash
+          echo ${{ steps.getHash.outputs.commit-hash }} | 
+            tee .${{ env.REPO_NAME }}-${{ env.REPO_BRANCH }}-commit-hash
 
   build:
     name: Build firmware
@@ -113,6 +114,7 @@ jobs:
           sudo -E apt-get -qq autoremove --purge
           sudo -E apt-get -qq clean
           sudo timedatectl set-timezone $TIME_ZONE
+          sudo timedatectl
           sudo mkdir -p /workdir/
           sudo chown $USER:$GROUPS /workdir/
 
