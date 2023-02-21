@@ -91,6 +91,8 @@ jobs:
         run: |
           echo ${{ steps.getHash.outputs.commit-hash }} | 
             tee .${{ env.REPO_NAME }}-${{ env.REPO_BRANCH }}-commit-hash
+          echo "测试"
+          cat .${{ env.REPO_NAME }}-${{ env.REPO_BRANCH }}-commit-hash
 
   build:
     name: Build firmware
