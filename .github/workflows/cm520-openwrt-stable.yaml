@@ -83,13 +83,13 @@ jobs:
         id: cacheHash
         uses: actions/cache@main
         with:
-          path: .$REPO_NAME-$REPO_BRANCH-commit-hash
+          path: .${{ REPO_NAME }}-${{ REPO_BRANCH }}-commit-hash
           key: HEAD-${{ steps.getHash.outputs.commit-hash }}
 
       - name: Save New Commit Hash
         if: steps.cacheHash.outputs.cache-hit != 'true'
         run: |
-          echo ${{ steps.getHash.outputs.commit-hash }} | tee .$REPO_NAME-$REPO_BRANCH-commit-hash
+          echo ${{ steps.getHash.outputs.commit-hash }} | tee .${{ REPO_NAME }}-${{ REPO_BRANCH }}-commit-hash
 
   build:
     name: Build firmware
