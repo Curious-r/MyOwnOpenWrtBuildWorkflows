@@ -34,7 +34,7 @@ env:
   # You can modify the REPO_NAME to any name you want, but remember not to let it 
   # have the same name in other workflows.
   REPO_NAME: opemwrt
-  REPO_URL: https://github.com/openwrt/openwrt.git
+  REPO_URL: https://git.openwrt.org/openwrt/openwrt.git
   REPO_BRANCH: openwrt-22.03
   BUILD_DEPENDS:  "ack antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 \
                    ccache clang cmake cpio curl device-tree-compiler fastjar file flex gawk gettext gcc-multilib \
