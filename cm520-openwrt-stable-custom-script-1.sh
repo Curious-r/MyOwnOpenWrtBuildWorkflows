@@ -134,4 +134,4 @@ git apply 0001-opboot.patch
 
 echo 'src-git design https://github.com/gngpp/luci-theme-design.git;js' >> feeds.conf.default
 echo 'src-git ddns_go https://github.com/sirpdboy/luci-app-ddns-go.git' >> feeds.conf.default
-echo 'src-svn openclash https://github.com/vernesong/OpenClash/trunk/luci-app-openclash' >> feeds.conf.default
+echo 'src-svn openclash https://github.com/vernesong/OpenClash/trunk/' >> feeds.conf.default
