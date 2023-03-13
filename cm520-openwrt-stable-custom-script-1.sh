@@ -132,7 +132,6 @@ index 1dde17e293..669fd5a784 100644
 EOF
 git apply 0001-opboot.patch
 
-echo 'src-git kenzo https://github.com/kenzok8/openwrt-packages.git' >> feeds.conf.default
-echo 'src-git small https://github.com/kenzok8/small.git # passwall 基本依赖' >> feeds.conf.default
-echo 'src-git ddns_go https://github.com/sirpdboy/luci-app-ddns-go.git' >> feeds.conf.default
 echo 'src-git design https://github.com/gngpp/luci-theme-design.git;js' >> feeds.conf.default
+echo 'src-git ddns_go https://github.com/sirpdboy/luci-app-ddns-go.git' >> feeds.conf.default
+echo 'src-svn openclash https://github.com/vernesong/OpenClash/trunk/luci-app-openclash' >> feeds.conf.default
