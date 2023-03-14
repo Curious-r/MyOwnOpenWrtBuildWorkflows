@@ -34,8 +34,8 @@
 #EOF
 #git apply example.patch
 
-touch 0001-opboot.patch
-cat>0001-opboot.patch<<EOF
+touch opboot.patch
+cat>opboot.patch<<EOF
 Subject: [PATCH] =?UTF-8?q?=E9=80=82=E9=85=8Dopboot?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -130,7 +130,7 @@ index 1dde17e293..669fd5a784 100644
  		};
 -- 
 EOF
-git apply 0001-opboot.patch
+git apply opboot.patch
 
 echo 'src-git ddns_go https://github.com/sirpdboy/luci-app-ddns-go.git' >> feeds.conf.default
 echo 'src-svn openclash https://github.com/vernesong/OpenClash/trunk/' >> feeds.conf.default
