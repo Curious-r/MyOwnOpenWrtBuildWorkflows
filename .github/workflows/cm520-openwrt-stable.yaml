@@ -27,8 +27,8 @@ on:
         required: false
         default: "false"
 # Uncomment the following to run regularly. Note that the cron expression here does not contain seconds.
-  schedule:
-    - cron: 0 12 * * *
+#  schedule:
+#    - cron: 0 12 * * *
 
 env:
   # REPO means the OpenWrt repo you want to build from in this workflow. 
