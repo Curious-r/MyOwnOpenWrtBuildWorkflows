@@ -142,7 +142,7 @@ index 1dde17e293..1224a0cb9e 100644
 2.30.2
 
 EOF
-git a opboot.patch
+git am opboot.patch
 
 echo 'src-git ddns_go https://github.com/sirpdboy/luci-app-ddns-go.git' >> feeds.conf.default
 echo 'src-svn openclash https://github.com/vernesong/OpenClash/trunk/' >> feeds.conf.default
