@@ -27,7 +27,7 @@ on:
         required: false
         default: "false"
   schedule:
-    - cron: 0 16 * * *
+    - cron: 0 16 * * 5
 
 env:
   REPO_NAME: lean-lede
