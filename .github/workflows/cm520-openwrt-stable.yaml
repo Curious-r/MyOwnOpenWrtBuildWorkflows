@@ -35,7 +35,7 @@ env:
   # have the same name in other workflows.
   REPO_NAME: opemwrt
   REPO_URL: https://github.com/openwrt/openwrt.git
-  REPO_BRANCH: openwrt-22.03
+  REPO_BRANCH: v22.03.3
   BUILD_DEPENDS:  "ack antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 \
                    ccache clang cmake cpio curl device-tree-compiler fastjar file flex gawk gettext gcc-multilib \
                    g++ g++-multilib git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev \
