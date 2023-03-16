@@ -147,6 +147,6 @@ git config --global user.email "Curious@curious.host"
 git config --global user.name "Curious"
 git am opboot.patch
 
-echo 'src-git ddns_go https://github.com/sirpdboy/luci-app-ddns-go.git' >> feeds.conf.default
-echo 'src-svn openclash https://github.com/vernesong/OpenClash/trunk/' >> feeds.conf.default
-git clone --branch js https://github.com/gngpp/luci-theme-design.git ./package/luci-theme-design/
+git clone --branch js https://github.com/gngpp/luci-theme-design.git package/luci-theme-design/
+git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go/
+svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash/
