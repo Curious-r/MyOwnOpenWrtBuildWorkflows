@@ -54,6 +54,9 @@ env:
   # need, please upload your scripts to the root directory of your workflow repo.
   CUSTOM_SCRIPT_1: cm520-openwrt-stable-custom-script-1.sh
   CUSTOM_SCRIPT_2: cm520-openwrt-stable-custom-script-2.sh
+  # If you have packages in your configuration that are compiled but not solidified into firmware, set the 
+  # following variable to true.
+  RETAIN_COMPILED_PACKAGES: true
   # The following determines whether to upload the compiled products.
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
@@ -190,7 +193,7 @@ jobs:
         if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
         run: |
           cd openwrt/bin/targets/*/*
-          rm -rf packages/
+          $RETAIN_COMPILED_PACKAGES || rm -rf packages/
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
           echo "status=success" >> $GITHUB_OUTPUT
 
