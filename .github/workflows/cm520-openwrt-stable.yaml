@@ -193,7 +193,7 @@ jobs:
         if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
         run: |
           cd openwrt/bin/targets/*/*
-          $RETAIN_COMPILED_PACKAGES || rm -rf packages/
+          [ $RETAIN_COMPILED_PACKAGES = true ] || rm -rf packages/
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
           echo "status=success" >> $GITHUB_OUTPUT
 
@@ -228,12 +228,12 @@ jobs:
         run: |
           echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
           touch release.txt
-          [ $UPLOAD_COWTRANSFER = true ] && echo -e \
-            "Build from $REPO_URL\nProducts transfer:\n🔗 \
-            [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-          [ $UPLOAD_WETRANSFER = true ] && echo -e \
-            "Build from $REPO_URL\nProducts transfer:\n🔗 \
-            [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
+          echo "Build from $REPO_URL $REPO_BRANCH" >> release.txt
+          [ $UPLOAD_COWTRANSFER = true -o $UPLOAD_WETRANSFER = true ] && echo "Products transfer:" >> release.txt
+          [ $UPLOAD_COWTRANSFER = true ] && echo \
+            "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
+          [ $UPLOAD_WETRANSFER = true ] && echo \
+            "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
           echo "status=success" >> $GITHUB_OUTPUT
 
       - name: Upload firmware to release
