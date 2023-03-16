@@ -229,7 +229,7 @@ jobs:
           echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
           touch release.txt
           echo "Build from $REPO_URL $REPO_BRANCH" >> release.txt
-          [ $UPLOAD_COWTRANSFER = true -o $UPLOAD_WETRANSFER = true ] && echo "Products transfer:" >> release.txt
+          [ $UPLOAD_COWTRANSFER = true -o $UPLOAD_WETRANSFER = true ] && echo 'Products transfer:' >> release.txt
           [ $UPLOAD_COWTRANSFER = true ] && echo \
             "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
           [ $UPLOAD_WETRANSFER = true ] && echo \
