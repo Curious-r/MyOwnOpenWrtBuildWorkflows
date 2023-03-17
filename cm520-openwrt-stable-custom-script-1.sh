@@ -26,7 +26,7 @@
 # # Uncomment a feed source:
 #sed -i 's/^#\(.*feed-name\)/\1/' feeds.conf.default
 # # Replace src-git-full with src-git to reduce the depth of cloning:
-#sed 's/src-git-full/src-git/g' feeds.conf.default
+#sed -i 's/src-git-full/src-git/g' feeds.conf.default
 #
 # You can also modify the source code by patching.
 # # Here's a template for patching:
@@ -149,7 +149,7 @@ git config --global user.email "Curious@curious.host"
 git config --global user.name "Curious"
 git am opboot.patch
 
-sed 's/src-git-full/src-git/g' feeds.conf.default
+sed -i 's/src-git-full/src-git/g' feeds.conf.default
 git clone --depth 1 --branch js  --single-branch https://github.com/gngpp/luci-theme-design.git package/luci-theme-design/
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go/
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash/
