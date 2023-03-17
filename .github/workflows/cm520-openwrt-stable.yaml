@@ -57,7 +57,7 @@ env:
   # The following option determine whether to upload all compilation products to workflow artifacts.
   STORE_PRODUCTS: true
   # The following option determine whether to upload firmwares to workflow artifacts.
-  STORE_FIRMWARE: true
+  STORE_FIRMWARE: false
   # The following is the option of where the firmware needs to be transfered. 
   # To enable the corresponding target, you need to change false to true.
   COWTRANSFER_FIRMWARE: false
