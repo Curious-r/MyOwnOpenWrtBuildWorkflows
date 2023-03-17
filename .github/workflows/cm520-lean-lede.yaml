@@ -47,11 +47,11 @@ env:
   # If you have packages in your configuration that are compiled but not solidified into firmware, set the 
   # following variable to true.
   RETAIN_COMPILED_PACKAGES: false
-  UPLOAD_BIN_DIR: false
-  UPLOAD_FIRMWARE: true
-  UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: true
-  UPLOAD_RELEASE: true
+  STORE_PRODUCTS: false
+  STORE_FIRMWARE: true
+  COWTRANSFER_FIRMWARE: false
+  WETRANSFER_FIRMWARE: true
+  RELEASE_FIRMWARE: true
   TIME_ZONE: Asia/Shanghai
 
 jobs:
@@ -167,32 +167,32 @@ jobs:
         if: (!cancelled())
         run: df -hT
 
-      - name: Upload bin directory
+      - name: Upload all compilation products
         uses: actions/upload-artifact@main
-        if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
+        if: steps.compile.outputs.status == 'success' && env.STORE_PRODUCTS == 'true'
         with:
           name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
           path: openwrt/bin/
 
-      - name: Organize compilation products
-        id: organize-products
-        if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
+      - name: Organize firmware-related files
+        id: organize-files
+        if: env.STORE_FIRMWARE == 'true' && !cancelled()
         run: |
           cd openwrt/bin/targets/*/*
-          [ $RETAIN_COMPILED_PACKAGES = true ] || rm -rf packages/
+          rm -rf packages/
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
           echo "status=success" >> $GITHUB_OUTPUT
 
       - name: Upload firmware directory
         uses: actions/upload-artifact@main
-        if: steps.organize-products.outputs.status == 'success' && !cancelled()
+        if: steps.organize-files.outputs.status == 'success' && !cancelled()
         with:
           name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
           path: ${{ env.FIRMWARE }}
 
       - name: Upload firmware to cowtransfer
         id: cowtransfer
-        if: steps.organize-products.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
+        if: steps.organize-files.outputs.status == 'success' && env.COWTRANSFER_FIRMWARE == 'true' && !cancelled()
         run: |
           curl -fsSL git.io/file-transfer | sh
           ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
@@ -201,7 +201,7 @@ jobs:
 
       - name: Upload firmware to WeTransfer
         id: wetransfer
-        if: steps.organize-products.outputs.status == 'success' && env.UPLOAD_WETRANSFER == 'true' && !cancelled()
+        if: steps.organize-files.outputs.status == 'success' && env.WETRANSFER_FIRMWARE == 'true' && !cancelled()
         run: |
           curl -fsSL git.io/file-transfer | sh
           ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
@@ -210,15 +210,15 @@ jobs:
 
       - name: Generate release tag
         id: tag
-        if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+        if: env.RELEASE_FIRMWARE == 'true' && !cancelled()
         run: |
           echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
           touch release.txt
           echo "Build from $REPO_URL $REPO_BRANCH" >> release.txt
-          [ $UPLOAD_COWTRANSFER = true -o $UPLOAD_WETRANSFER = true ] && echo 'Products transfer:' >> release.txt
-          [ $UPLOAD_COWTRANSFER = true ] && echo \
+          [ $COWTRANSFER_FIRMWARE = true -o $WETRANSFER_FIRMWARE = true ] && echo 'Products transfer:' >> release.txt
+          [ $COWTRANSFER_FIRMWARE = true ] && echo \
             "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-          [ $UPLOAD_WETRANSFER = true ] && echo \
+          [ $WETRANSFER_FIRMWARE = true ] && echo \
             "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
           echo "status=success" >> $GITHUB_OUTPUT
 
@@ -246,7 +246,7 @@ jobs:
 
       - name: Remove old Releases
         uses: dev-drprasad/delete-older-releases@master
-        if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+        if: env.RELEASE_FIRMWARE == 'true' && !cancelled()
         with:
           keep_latest: 3
           delete_tags: true
