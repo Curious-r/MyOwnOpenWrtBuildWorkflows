@@ -61,7 +61,7 @@ env:
   STORE_FIRMWARE: true
   # The following are options of where the firmware needs to be transfered. 
   COWTRANSFER_FIRMWARE: false
-  WETRANSFER_FIRMWARE: true
+  WETRANSFER_FIRMWARE: false
   RELEASE_FIRMWARE: true
   # Change the following to your time zone.
   TIME_ZONE: Asia/Shanghai
