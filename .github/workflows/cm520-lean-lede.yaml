@@ -26,8 +26,8 @@ on:
         description: "SSH connection to Actions"
         required: false
         default: "false"
-  schedule:
-    - cron: 0 16 * * 5
+  #schedule:
+    #- cron: 0 16 * * 5
 
 env:
   REPO_NAME: lean-lede
